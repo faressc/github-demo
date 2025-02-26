@@ -5,10 +5,6 @@ on:
   workflow_dispatch: # lets you run a build from github.com
   # Runs the workflow on all push events
   push:
-  pull_request:
-    branches:
-      - main
-  merge_group:
 
 env:
   SCCACHE_GHA_ENABLED: "true"

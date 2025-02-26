@@ -58,7 +58,7 @@ jobs:
     steps:
       - name: check test results
         run: |
-          echo "The test was: ${{ needs.build_test.result }}"
+          echo "The test was a: ${{ needs.build_test.result }}"
           if [ ${{ job.status }} == "failure" ]; then
             echo "The test failed"
             exit 1

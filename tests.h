@@ -10,6 +10,7 @@ void TestAdd() {
     assert(asc.add(1) == 2);
     assert(asc.add(-1) == 1);
     assert(asc.add(-2) == -1);
+    assert(asc.add(-2) == -1);
     std::cout << "All Add tests passed!" << std::endl;
 }
 
