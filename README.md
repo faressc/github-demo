@@ -44,3 +44,8 @@ Optinal: Create a similar ruleset for tags. Repository Settings/Rules/New rulese
         - build_test / macOS-x86_64
         - build_test / macOS-x86_64
 - Block force pushes: Enabled
+
+## Not covered in this demo
+
+- Secrets
+- Code signing on macOS

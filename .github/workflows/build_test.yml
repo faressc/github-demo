@@ -63,9 +63,7 @@ jobs:
         run: |
           echo "The test was a: ${{ needs.build_test.result }}"
           if [ ${{ needs.build_test.result }} == "failure" ]; then
-            echo "The test failed"
             exit 1
           else
-            echo "The test passed"
             exit 0
           fi
