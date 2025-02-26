@@ -1,15 +1,15 @@
-name: test
-description: "Test the library"
+name: run
+description: "Run the library"
 
 runs:
   using: "composite"
   steps:
     # Build the project
-    - name: test
+    - name: run
       shell: bash
       run: |
         if [ "${{ matrix.name }}" == "Windows-x86_64" ]; then
-          ./build/test.exe
+          ./build/main.exe
         else
-          ./build/test
+          ./build/main
         fi

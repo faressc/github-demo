@@ -1,4 +1,4 @@
-name: build_test
+name: build_run
 
 on:
   workflow_call:
@@ -47,7 +47,7 @@ jobs:
         with:
           BUILD_TYPE: Release
           CMAKE_BUILD_PARALLEL_LEVEL: 4
-          CMAKE_BUILD_ARGS: "-DWITH_TESTS=oFF"
+          CMAKE_BUILD_ARGS: "-DWITH_TESTS=OFF"
           TARGETS: (main)
-      - name: test
-        uses: ./.github/actions/try
+      - name: run
+        uses: ./.github/actions/run

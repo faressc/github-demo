@@ -4,10 +4,10 @@ on:
   workflow_call:
   workflow_dispatch: # lets you run a build from github.com
   # Runs the workflow on all push events
-  # push:
-  # pull_request:
-  #   branches:
-  #     - main
+  push:
+  pull_request:
+    branches:
+      - main
 
 env:
   SCCACHE_GHA_ENABLED: "true"
@@ -48,5 +48,6 @@ jobs:
           BUILD_TYPE: Release
           CMAKE_BUILD_PARALLEL_LEVEL: 4
           CMAKE_BUILD_ARGS: "-DWITH_TESTS=ON"
+          TARGETS: (main test)
       - name: test
         uses: ./.github/actions/test
