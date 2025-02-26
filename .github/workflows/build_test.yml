@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - main
+  merge_group:
+    types: [checks_requested]
 
 env:
   SCCACHE_GHA_ENABLED: "true"
