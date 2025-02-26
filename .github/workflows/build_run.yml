@@ -48,3 +48,19 @@ jobs:
           TARGETS: (main)
       - name: run
         uses: ./.github/actions/run
+  run_result:
+    needs: build_run
+    runs-on: ubuntu-latest
+    # This is needed otherwise the job will not run if the build_test job fails and the status check will waiting for an answer
+    if: always()
+    steps:
+      - name: check run results
+        run: |
+          echo "The test was a: ${{ needs.build_run.result }}"
+          if [ ${{ needs.build_run.result }} == "failure" ]; then
+            echo "The run failed"
+            exit 1
+          else
+            echo "The run passed"
+            exit 0
+          fi
