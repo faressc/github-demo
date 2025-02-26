@@ -5,13 +5,13 @@
 #include <cassert>
 #include "AddSubClass.h"
 
+
 void TestAdd() {
     AddSubClass asc(1);
     assert(asc.add(1) == 2);
     assert(asc.add(-1) == 1);
     assert(asc.add(-2) == -1);
     assert(asc.add(-2) == -1);
-    std::cout << "News from the header" << std::endl;
     std::cout << "All Add tests passed!" << std::endl;
 }
 

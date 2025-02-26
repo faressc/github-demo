@@ -44,7 +44,8 @@ jobs:
       - name: build
         uses: ./.github/actions/build
         with:
-          BUILD_TYPE: Release
+          # Asserts do not work in release builds!
+          BUILD_TYPE: Debug
           CMAKE_BUILD_PARALLEL_LEVEL: 4
           CMAKE_BUILD_ARGS: "-DWITH_TESTS=ON"
           TARGETS: (main test)
@@ -56,7 +57,7 @@ jobs:
     needs: build_test
     runs-on: ubuntu-latest
     # This is needed otherwise the job will not run if the build_test job fails and the status check will waiting for an answer
-    if: always()
+    # if: always()
     steps:
       - name: check test results
         run: |
