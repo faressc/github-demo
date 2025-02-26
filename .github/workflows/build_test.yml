@@ -50,6 +50,8 @@ jobs:
           TARGETS: (main test)
       - name: test
         uses: ./.github/actions/test
+  # Matrix strategy job results cannot be directly used as required status checks
+  # Therefore, we need to check the result of the test job in a separate job as workaround
   test_result:
     needs: build_test
     runs-on: ubuntu-latest
