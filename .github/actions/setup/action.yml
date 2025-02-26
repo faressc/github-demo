@@ -17,20 +17,20 @@ runs:
             echo "$(uname -a)"
           fi;
 
-      # We need the osxutils to get the codesign and notorization tools
+      # Install all dependencies for the project for the different operating systems
       - name: install deps
         shell: bash
         run: |
           if [ "${{ matrix.name }}" == "Linux-x86_64" ]; then
-            sudo apt-get update && sudo apt install ninja-build
+            sudo apt-get update
           elif [ "${{ matrix.name }}" == "macOS-x86_64" ]; then
-            brew install osxutils ninja
+            brew install osxutils
             echo "brew prefix: $(brew --prefix)"
           elif [ "${{ matrix.name }}" == "macOS-arm64" ]; then
-            brew install osxutils ninja
+            brew install osxutils
             echo "brew prefix: $(brew --prefix)"
           elif [ "${{ matrix.name }}" == "Windows-x86_64" ]; then
-            choco install ninja
+            echo "No dependencies to install"
           else
             echo "Unknown OS";
           fi;
