@@ -55,6 +55,8 @@ jobs:
   test_result:
     needs: build_test
     runs-on: ubuntu-latest
+    # This is needed otherwise the job will not run if the build_test job fails and the status check will waiting for an answer
+    if: always()
     steps:
       - name: check test results
         run: |
