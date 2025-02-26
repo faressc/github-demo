@@ -25,7 +25,7 @@ code .
 - main.cpp und AddSubClass.h kopieren
 - ggf. vscode neu starten für CMake-Tools
 - kurz erklären main und addsubclass
-- .gitignore kopieren
+- !! .gitignore kopieren !!
 
 ```bash
 git status
@@ -97,7 +97,7 @@ git push
 git checkout -b feature
 ```
 
-Readme.md bearbeiten
+Readme.md bearbeiten: New great feature!
 
 ```bash
 git add .
@@ -136,7 +136,7 @@ git push --set-upstream origin feature
 git checkout main
 ```
 
-- Änderungen machen am Readme.md
+- Änderungen machen am Readme.md: Changes on main!
 
 ```bash
 git add .
@@ -210,6 +210,11 @@ git commit -m "Added install step for artifacts"
 git push --set-upstream origin feature-install
 ```
 
+- Github Actions erlauben releases zu erstellen
+- Settings -> Actions -> General -> Workflow permissions -> Read and write permissions
+
+- Release erstellen
+
 - Pull request erstellen mit Issue referenzieren #2
 - Pull request mergen
 - Branch löschen
@@ -220,11 +225,6 @@ git checkout main
 git pull
 git branch -d feature-install
 ```
-
-- Github Actions erlauben releases zu erstellen
-- Settings -> Actions -> General -> Workflow permissions -> Read and write permissions
-
-- Release erstellen
 
 ```bash
 git tag -a "v0.0.1"
