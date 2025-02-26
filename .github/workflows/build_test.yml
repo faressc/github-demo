@@ -52,3 +52,10 @@ jobs:
           TARGETS: (main test)
       - name: test
         uses: ./.github/actions/test
+  build_result:
+    needs: build_test
+    runs-on: ubuntu-latest
+    steps:
+      - name: check test results
+        run: |
+          echo "reached the end of the build_test workflow"
