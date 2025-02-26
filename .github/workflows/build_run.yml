@@ -1,11 +1,11 @@
 name: build_run
 
 on:
-  workflow_call:
   workflow_dispatch: # lets you run a build from github.com
   # Runs the workflow on all push events
   push:
 
+# For the sccache action
 env:
   SCCACHE_GHA_ENABLED: "true"
 
@@ -15,10 +15,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Name of the job
   build_run:
     name: ${{ matrix.name }}
     strategy:
       fail-fast: false # show all errors for each platform (vs. cancel jobs on error)
+      # The matrix strategy allows us to run the same job on multiple operating systems
       matrix:
         include:
           - name: Linux-x86_64
@@ -29,9 +31,11 @@ jobs:
             os: macOS-latest
           - name: Windows-x86_64
             os: windows-latest
-
+    # The operating system the job runs on
     runs-on: ${{ matrix.os }}
+    # These steps shall be followed
     steps:
+      # First get the repository and its submodules
       - name: get repo and submodules
         uses: actions/checkout@v4
         with:

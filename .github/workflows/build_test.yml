@@ -1,7 +1,7 @@
 name: build_test
 
 on:
-  workflow_call:
+  workflow_call: # can be called from another workflow
   workflow_dispatch: # lets you run a build from github.com
   # Runs the workflow on all push events
   pull_request:

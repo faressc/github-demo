@@ -2,6 +2,7 @@ name: on_tag
 
 on:
   workflow_dispatch:
+  # Should only run when we push a new tag
   push:
     tags:
       - 'v*.*.*'
@@ -13,8 +14,8 @@ jobs:
   # Do all tests before building release
   build_test:
     uses: ./.github/workflows/build_test.yml
-    secrets: inherit
   build_release:
+    # Only run this job if the build_test job was successful
     needs: build_test
     name: ${{ matrix.name }}
     strategy:
