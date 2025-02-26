@@ -37,6 +37,9 @@ message(STATUS "Project version: ${PROJECT_VERSION_FULL} (${PROJECT_VERSION_SHOR
 # Set the project name
 project(github-demo VERSION ${PROJECT_VERSION_SHORT})
 
+# Define the include directory
+include_directories(include)
+
 # Add an executable
 add_executable(main main.cpp)
 
