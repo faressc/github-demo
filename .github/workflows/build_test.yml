@@ -50,7 +50,7 @@ jobs:
           TARGETS: (main test)
       - name: test
         uses: ./.github/actions/test
-  tests_result:
+  test_result:
     needs: build_test
     runs-on: ubuntu-latest
     steps:
