@@ -7,8 +7,6 @@ on:
   pull_request:
     branches:
       - main
-  # # Runs the workflow for status checks on pull requests
-  # merge_group:
 
 env:
   SCCACHE_GHA_ENABLED: "true"
