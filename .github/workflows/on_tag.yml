@@ -10,6 +10,7 @@ env:
   SCCACHE_GHA_ENABLED: "true"
 
 jobs:
+  # Do all tests before building release
   build_test:
     uses: ./.github/workflows/build_test.yml
     secrets: inherit
