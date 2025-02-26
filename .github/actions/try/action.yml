@@ -1,0 +1,10 @@
+name: test
+description: "Test the library"
+
+runs:
+  using: "composite"
+  steps:
+    # Build the project
+    - name: test
+      shell: bash
+      run: ./build/main
