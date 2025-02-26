@@ -5,9 +5,6 @@ on:
   workflow_dispatch: # lets you run a build from github.com
   # Runs the workflow on all push events
   push:
-  pull_request:
-    branches:
-      - main
 
 env:
   SCCACHE_GHA_ENABLED: "true"
@@ -18,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build_try:
+  build_run:
     name: ${{ matrix.name }}
     strategy:
       fail-fast: false # show all errors for each platform (vs. cancel jobs on error)

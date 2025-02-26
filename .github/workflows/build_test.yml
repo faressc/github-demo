@@ -4,7 +4,6 @@ on:
   workflow_call:
   workflow_dispatch: # lets you run a build from github.com
   # Runs the workflow on all push events
-  push:
   pull_request:
     branches:
       - main
@@ -45,9 +44,26 @@ jobs:
       - name: build
         uses: ./.github/actions/build
         with:
-          BUILD_TYPE: Release
+          # Asserts do not work in release builds!
+          BUILD_TYPE: Debug
           CMAKE_BUILD_PARALLEL_LEVEL: 4
           CMAKE_BUILD_ARGS: "-DWITH_TESTS=ON"
           TARGETS: (main test)
       - name: test
         uses: ./.github/actions/test
+  # Matrix strategy job results cannot be directly used as required status checks
+  # Therefore, we need to check the result of the test job in a separate job as workaround
+  test_result:
+    needs: build_test
+    runs-on: ubuntu-latest
+    # This is needed otherwise the job will not run if the build_test job fails and the status check will waiting for an answer
+    if: always()
+    steps:
+      - name: check test results
+        run: |
+          echo "The test was a: ${{ needs.build_test.result }}"
+          if [ ${{ needs.build_test.result }} == "failure" ]; then
+            exit 1
+          else
+            exit 0
+          fi

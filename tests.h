@@ -5,6 +5,7 @@
 #include <cassert>
 #include "AddSubClass.h"
 
+
 void TestAdd() {
     AddSubClass asc(1);
     assert(asc.add(1) == 2);
