@@ -9,7 +9,7 @@ runs:
       shell: bash
       run: |
         if [ "${{ matrix.name }}" == "Windows-x86_64" ]; then
-          ./build/test.exe
+          ./build/Release/test.exe
         else
           ./build/test
         fi

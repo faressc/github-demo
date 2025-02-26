@@ -9,7 +9,6 @@ runs:
       shell: bash
       run: |
         if [ "${{ matrix.name }}" == "Windows-x86_64" ]; then
-          ls ./build
           ./build/Release/main.exe
         else
           ./build/main
