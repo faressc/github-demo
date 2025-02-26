@@ -50,10 +50,17 @@ jobs:
           TARGETS: (main test)
       - name: test
         uses: ./.github/actions/test
-  build_result:
+  tests_result:
     needs: build_test
     runs-on: ubuntu-latest
     steps:
       - name: check test results
         run: |
-          echo "reached the end of the build_test workflow"
+          echo "The test was: ${{ needs.build_test.result }}"
+          if [ ${{ job.status }} == "failure" ]; then
+            echo "The test failed"
+            exit 1
+          else
+            echo "The test passed"
+            exit 0
+          fi
